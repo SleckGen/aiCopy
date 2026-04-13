@@ -1,0 +1,10 @@
+# 专门针对 AI 忽略的文件夹（行为上等同于 .gitignore，双重保险）
+.idea/
+.vscode/
+target/
+*.jar
+*.war
+*.ear
+*.class
+*.log
+.mvn/

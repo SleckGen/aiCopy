@@ -1,0 +1,57 @@
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+### IDE ###
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+### Gradle (备用) ###
+.gradle/
+build/
+
+### Logs ###
+*.log
+logs/
+
+### Environment & Secrets ###
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.properties
+
+### OS Generated ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini

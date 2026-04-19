@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://pgm-bp1q9va13jxla14b.pg.rds.aliyuncs.com:5432/postgres
+    url: jdbc:postgresql://pgm-bp1q9va13jxla14buo.pg.rds.aliyuncs.com:5432/ai
     username: alipgsql
     password: dapbuK-xinbyf-cajva7
     driver-class-name: org.postgresql.Driver
@@ -21,10 +21,26 @@ spring:
   ai:
     vectorstore:
       pgvector:
-        initialize-schema: true
         index-type: HNSW
         distance-type: COSINE_DISTANCE
-        dimensions: 1536
+        dimensions: 1024 # 必须与 Embedding 模型输出维度一致
+        max-document-batch-size: 9
+        initialize-schema: false
+        table-name: vector_st
+
+    dashscope:
+      # 全局 API Key
+      api-key: sk-70f05b23a4814dc9a417bfe2000face3
+
+      embedding:
+        options:
+          # 修改为阿里云的模型名
+          model: qwen3-vl-embedding
+          dimensions: 1024 #模型不支持修改 默认1536维度
+      chat:
+        options:
+          # 必须写对模型名，qwen-turbo 是阿里云免费/低价的模型
+          model: qwen-turbo
 
 server:
   port: 8080

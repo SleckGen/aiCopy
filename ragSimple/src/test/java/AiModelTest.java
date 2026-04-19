@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import com.rag.simple.service.RefundCustomerService;
+import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,6 +22,9 @@ class AiModelTest {
 
     @Autowired
     private DashScopeChatModel chatModel;
+
+    @Autowired
+    private RefundCustomerService refundCustomerService;
     /**
      * 测试 1：阿里云向量化功能
      * 目标：验证 text-embedding-v1 是否正常工作，并检查实际维度
@@ -101,5 +106,29 @@ class AiModelTest {
             e.printStackTrace();
             throw e;
         }
+    }
+
+    /**
+     * 测试 3：客服模拟多轮对话（包含退款 @Tool 记忆）
+     */
+    @Test
+    void testRefundAgent() {
+        System.out.println(">>> [测试退款客服] 开始模拟多轮对话...");
+        String chatId = "user_" + System.currentTimeMillis();
+
+        // 模拟多轮对话
+        String[] userMessages = {
+                "你好，我在你们店里买的东西出问题了。",
+                "我买的食物都变质了！！！完全没法吃，订单号是 ORD-2026-999。",
+                "是的，我确认需要退款。"
+        };
+
+        for (String message : userMessages) {
+            System.out.println("\n[用户]: " + message);
+            String aiResponse = refundCustomerService.chat(chatId, message);
+            System.out.println("[AI客服]: " + aiResponse);
+        }
+        
+        System.out.println("\n>>> [测试退款客服] 测试完成");
     }
 }

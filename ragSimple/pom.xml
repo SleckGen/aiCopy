@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>org.example.llm</groupId>
     <artifactId>ragSimple</artifactId>
     <version>1.0-SNAPSHOT</version>
 

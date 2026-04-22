@@ -30,7 +30,7 @@ spring:
 
     dashscope:
       # 全局 API Key
-      api-key: sk-70f05b23a4814dc9a417bfe2000face3
+      api-key: @dashscope.api.key@
 
       embedding:
         options:
